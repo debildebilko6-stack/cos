@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  kfc-cos-app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+      - ./normativi.xlsx:/app/normativi.xlsx
+    environment:
+      - DB_PATH=/app/data/kfc_cos.db
+      - NORMATIVI_PATH=/app/normativi.xlsx
+      - PORT=8080
+    restart: unless-stopped
+
